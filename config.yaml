@@ -1,0 +1,37 @@
+# Fuzzy-Guided Dynamic Feature Fusion — experiment settings
+
+seed: 42
+data:
+  root: data/raw
+  image_size: 224
+  extensions: [jpg, jpeg, png, bmp, tif, tiff, webp]
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+
+features:
+  cache_dir: results/feature_cache
+  device: auto   # auto | cpu | cuda
+  extractors:
+    - resnet50
+    - densenet121
+    - efficientnet_b0
+
+quality:
+  indicators:
+    - sharpness
+    - contrast
+    - entropy
+    - noise
+    - brightness
+  # Percentile clip used to map raw IQA scores to [0, 1]
+  clip_low: 2
+  clip_high: 98
+
+classifier:
+  type: logreg          # logreg | linear_svm
+  max_iter: 2000
+  C: 1.0
+
+output:
+  dir: results

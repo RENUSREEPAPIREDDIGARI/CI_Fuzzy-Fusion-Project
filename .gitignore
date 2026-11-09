@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+results/
+data/raw/
+data/dummy/
+kvasir-dataset/
+*.pt
+*.pth
+.DS_Store
+Thumbs.db
